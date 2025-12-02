@@ -53,6 +53,3 @@ ip2domain-result/
 * Ideal for large-scale infrastructure recon
 
 ---
-
-
-Do you want me to do that version too?
