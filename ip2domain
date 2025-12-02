@@ -1,6 +1,6 @@
 #!/bin/bash
 # ip2domain - IP → PTR DNS → HTTP Automation Scanner
-# Author: m4st3rm1nd
+# Author: aRY4
 
 function show_help {
     echo ""
@@ -30,12 +30,12 @@ function show_help {
     exit 0
 }
 
-# Show help
+
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
     show_help
 fi
 
-# Check input file
+
 if [[ -z "$1" ]]; then
     echo -e "\n[!] Error: No IP file provided!"
     echo "Use $0 -h for help"
@@ -47,7 +47,7 @@ output_dir="ip2domain-result"
 
 mkdir -p "$output_dir"
 
-# Banner
+
 echo ""
 echo " _      ______     _                   _       "
 echo "(_)    (_____ \   | |                 (_)      "
@@ -60,9 +60,6 @@ echo ""
 echo "                       ip2domain by m4st3rm1nd"
 echo "------------------------------------------------------------"
 
-###################################
-# Phase 1 — PTR DNS Lookup (dnsx)
-###################################
 echo -e "\033[1;34m[+] PHASE 1: PTR DNS Lookup\033[0m"
 sleep 1
 
@@ -75,9 +72,6 @@ ptr_count=$(wc -l < "$output_dir/ptr-output.txt")
 
 echo -e "\033[1;32m[+] PTR Resolved: $ptr_count records!\033[0m"
 
-###################################
-# Phase 2 — HTTP Probing (httpx)
-###################################
 echo -e "\n\033[1;34m[+] PHASE 2: HTTP Probing\033[0m"
 sleep 1
 
@@ -91,9 +85,6 @@ http_count=$(wc -l < "$output_dir/http-output.txt")
 
 echo -e "\033[1;32m[+] HTTP Alive Hosts: $http_count\033[0m"
 
-###################################
-# Finished
-###################################
 echo ""
 echo -e "\033[1;36m[+] Scan Completed!\033[0m"
 echo "Output saved in:"
