@@ -1,7 +1,6 @@
 # **ip2domain**
 
-IP → PTR DNS → HTTP Detection Automation Tool
-Fast, simple, and fully automated reconnaissance pipeline.
+Automated: IP → PTR → HTTP reconnaissance.
 
 ```
  _      ______     _                   _       
@@ -13,92 +12,47 @@ Fast, simple, and fully automated reconnaissance pipeline.
   |_|                                          
 ```
 
-## **Overview**
+## **Description**
 
-`ip2domain` takes a list of IP addresses, performs strict PTR (reverse DNS) lookups, extracts domain names, and automatically probes them over HTTP/HTTPS to identify live hosts.
-
-This tool is designed to speed up reconnaissance workflows for **bug bounty hunters, pentesters, and researchers**.
-
----
-
-## **Features**
-
-* Automated **PTR DNS Lookup** using `dnsx`
-* Automated **HTTP probing** using `httpx`
-* Clean structured output directory
-* Silent, fast, and script‑friendly
-* Minimal and easy to use
+Feed a list of IPs → resolve PTR records → probe HTTP/HTTPS → identify live hosts.
+Fast, silent, and ideal for pentesters, bug bounty hunters, and reconnaissance workflows.
 
 ---
 
 ## **Requirements**
 
-Make sure the following tools are installed:
-
-* [`dnsx`](https://github.com/projectdiscovery/dnsx)
-* [`httpx`](https://github.com/projectdiscovery/httpx)
-* Bash (Linux / macOS)
-
-Install both via ProjectDiscovery:
-
-```bash
-go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-```
+* `dnsx` (PTR lookup)
+* `httpx` (HTTP probing)
+* Bash (Linux/macOS)
 
 ---
 
 ## **Usage**
 
-### **Basic**
-
 ```bash
-./ip2domain <ip_list.txt>
-```
-
-### **Help**
-
-```bash
+./ip2domain <ips.txt>
 ./ip2domain -h
 ```
 
 ---
 
-## **Example**
+## **Output**
 
-```bash
-./ip2domain ips.txt
-
-[+] PHASE 1: PTR DNS Lookup
-[+] PTR Resolved: 42 records
-
-[+] PHASE 2: HTTP Probing
-[+] HTTP Alive Hosts: 17
+```
+ip2domain-result/
+ ├── ptr-output.txt   # Resolved domains
+ └── http-output.txt  # Live HTTP/HTTPS hosts
 ```
 
 ---
 
-## **Output Structure**
+## **Highlights**
 
-All results are stored inside:
-
-```
-ipRecon-result/
- ├── ptr-output.txt      # Resolved PTR domains
- └── http-output.txt     # Live HTTP hosts with status codes
-```
+* End-to-end automation for IP → domain → live HTTP discovery
+* Minimal, fast, script-friendly, silent operation
+* Ideal for large-scale infrastructure recon
 
 ---
 
-## **Use Cases**
 
-* Expanding IP-based scope during bug bounty
-* Finding hidden subdomains via reverse DNS
-* Quickly identifying live services on discovered PTR records
-* Infrastructure reconnaissance
-
----
-
-## **Author**
-
-**m4st3rm1nd**
+Do you want me to do that version too?
